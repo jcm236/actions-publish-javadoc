@@ -35,6 +35,11 @@ inputs:
     options:
       - maven
       - gradle
+      
+  deploy_dir:
+    description: "Deployment subdirectory"
+    required: false
+    default: "./"
   
 runs:
   using: "composite"
@@ -62,18 +67,20 @@ runs:
         
     - name: Publish javadoc to GitHub Pages 🚀 via Maven
       if: inputs.project == 'maven'
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ inputs.GITHUB_TOKEN }}
         publish_branch: ${{ inputs.branch }}
         publish_dir: target/site/apidocs
+        destination_dir: ${{ inputs.deploy_dir }}
         force_orphan: true
     
     - name: Publish javadoc to GitHub Pages 🚀 via Gradle
       if: inputs.project == 'gradle'
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ inputs.GITHUB_TOKEN }}
         publish_branch: ${{ inputs.branch }}
         publish_dir: build/docs/javadoc
+        destination_dir: ${{ inputs.deploy_dir }}
         force_orphan: true
