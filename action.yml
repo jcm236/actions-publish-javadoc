@@ -71,7 +71,7 @@ runs:
         github_token: ${{ inputs.GITHUB_TOKEN }}
         publish_branch: ${{ inputs.branch }}
         publish_dir: target/site/apidocs
-        destination_dir: ${{ inputs.deploy_dir }}
+        destination_dir: ./${{ inputs.deploy_dir }}
         force_orphan: true
     
     - name: Publish javadoc to GitHub Pages 🚀 via Gradle
@@ -81,5 +81,5 @@ runs:
         github_token: ${{ inputs.GITHUB_TOKEN }}
         publish_branch: ${{ inputs.branch }}
         publish_dir: build/docs/javadoc
-        destination_dir: ${{ inputs.deploy_dir }}
+        destination_dir: ./${{ inputs.deploy_dir }}
         force_orphan: true
