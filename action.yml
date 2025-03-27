@@ -1,4 +1,4 @@
-name: Deploy javadoc to Github Pages
+name: Deploy per branch javadocs to Github Pages
 description: "A GitHub action that publishes javadocumentation to GitHub Pages automatically"
 branding:
   icon: "book-open"
